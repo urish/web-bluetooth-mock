@@ -1,5 +1,7 @@
 # Web Bluetooth Mock
 
+[![Build Status](https://travis-ci.org/urish/web-bluetooth-mock.png?branch=master)](https://travis-ci.org/urish/web-bluetooth-mock)
+
 Mock for the Web Bluetooth API, useful for testing code that uses Web Bluetooth.
 
 Copyright (C) 2017, Uri Shaked. Licensed under the terms of MIT License.
