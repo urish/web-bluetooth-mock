@@ -3,20 +3,26 @@
 // Copyright (C) 2017, Uri Shaked
 // Published under the terms of the MIT license
 
-import { EventTarget } from 'event-target-shim';
+import { EventTarget } from "event-target-shim";
 
 export class CharacteristicMock extends EventTarget {
-    value: DataView;
+    public value: DataView;
 
     constructor(public service: PrimaryServiceMock) {
         super();
     }
 
-    startNotifications() { }
+    public startNotifications() {
+        return Promise.resolve();
+    }
 
-    readValue() { }
+    public readValue() {
+        return Promise.resolve(new DataView(new Uint8Array(0)));
+    }
 
-    writeValue() { }
+    public writeValue() {
+        return Promise.resolve();
+    }
 }
 
 export class PrimaryServiceMock {
@@ -25,11 +31,11 @@ export class PrimaryServiceMock {
     constructor(public device: DeviceMock) {
     }
 
-    getCharacteristic(characteristic: BluetoothCharacteristicUUID) {
+    public getCharacteristic(characteristic: BluetoothCharacteristicUUID) {
         return Promise.resolve(this.getCharacteristicMock(characteristic));
     }
 
-    getCharacteristicMock(characteristic: BluetoothCharacteristicUUID) {
+    public getCharacteristicMock(characteristic: BluetoothCharacteristicUUID) {
         if (!this.characteristicMocks[characteristic]) {
             this.characteristicMocks[characteristic] = new CharacteristicMock(this);
         }
@@ -42,30 +48,29 @@ export class GattMock {
         this.device = device;
     }
 
-    connect() {
+    public connect() {
         return Promise.resolve(this);
     }
 
-    getPrimaryService(service: BluetoothServiceUUID) {
+    public getPrimaryService(service: BluetoothServiceUUID) {
         return Promise.resolve(this.device.getServiceMock(service));
     }
 }
 
-
 export class DeviceMock extends EventTarget {
-    gatt: GattMock;
-    serviceMocks: { [service: string]: PrimaryServiceMock } = {};
+    public gatt: GattMock;
+    private serviceMocks: { [service: string]: PrimaryServiceMock } = {};
 
     constructor(public name: string, private services: BluetoothServiceUUID[]) {
         super();
         this.gatt = new GattMock(this);
     }
 
-    hasService(service: BluetoothServiceUUID) {
+    public hasService(service: BluetoothServiceUUID) {
         return this.services && this.services.indexOf(service) >= 0;
     }
 
-    getServiceMock(service: BluetoothServiceUUID) {
+    public getServiceMock(service: BluetoothServiceUUID) {
         if (!this.serviceMocks[service]) {
             this.serviceMocks[service] = new PrimaryServiceMock(this);
         }
@@ -78,9 +83,9 @@ export class WebBluetoothMock {
 
     }
 
-    requestDevice(options: RequestDeviceOptions) {
-        for (let device of this.devices) {
-            for (let filter of options.filters) {
+    public requestDevice(options: RequestDeviceOptions) {
+        for (const device of this.devices) {
+            for (const filter of options.filters) {
                 if (filter.name && filter.name === device.name) {
                     return Promise.resolve(device);
                 }
@@ -91,7 +96,7 @@ export class WebBluetoothMock {
 
                 if (filter.services) {
                     let found = true;
-                    for (let service of filter.services) {
+                    for (const service of filter.services) {
                         found = found && device.hasService(service);
                     }
                     if (found) {
@@ -100,6 +105,6 @@ export class WebBluetoothMock {
                 }
             }
         }
-        return Promise.reject(new Error('User cancelled device chooser'));
+        return Promise.reject(new Error("User cancelled device chooser"));
     }
 }

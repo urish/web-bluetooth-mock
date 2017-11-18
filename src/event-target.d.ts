@@ -1,7 +1,7 @@
-declare module 'event-target-shim' {
+declare module "event-target-shim" {
     export class EventTarget {
-        addEventListener(event: string, listener: Function): void;
-        removeEventListener(event: string, listener: Function): void;
-        dispatchEvent(event: Event): void;
+        public addEventListener(event: string, listener: (e: Event) => void): void;
+        public removeEventListener(event: string, listener: (e: Event) => void): void;
+        public dispatchEvent(event: Event): void;
     }
 }

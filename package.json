@@ -1,12 +1,14 @@
 {
   "name": "web-bluetooth-mock",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "dist/index.js",
+  "typings": "dist/index.d.ts",
   "repository": "git@github.com:urish/web-bluetooth-mock.git",
   "author": "Uri Shaked <uri@urish.org>",
   "license": "MIT",
   "scripts": {
     "build": "tsc",
+    "test": "tslint src/**/*.ts",
     "prepublish": "npm run build"
   },
   "files": [
@@ -17,6 +19,7 @@
     "event-target-shim": "^3.0.0"
   },
   "devDependencies": {
+    "tslint": "^5.8.0",
     "typescript": "^2.6.1"
   }
 }
