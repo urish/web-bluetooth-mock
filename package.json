@@ -19,7 +19,7 @@
     "event-target-shim": "^3.0.0"
   },
   "devDependencies": {
-    "tslint": "^5.8.0",
+    "tslint": "5.8.0",
     "typescript": "^2.6.1"
   }
 }
