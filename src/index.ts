@@ -156,14 +156,14 @@ export class DeviceMock extends EventTarget implements BluetoothDevice {
         return this.services && this.services.indexOf(service) >= 0;
     }
 
-    public getServiceMock(service: BluetoothServiceUUID): BluetoothRemoteGATTService {
+    public getServiceMock(service: BluetoothServiceUUID) {
         if (!this.serviceMocks[service]) {
             this.serviceMocks[service] = new PrimaryServiceMock(this, normalizeUuid(service));
         }
         return this.serviceMocks[service];
     }
 
-    public getServiceMocks(): BluetoothRemoteGATTService[] {
+    public getServiceMocks() {
         return Object.keys(this.serviceMocks).map((k) => this.serviceMocks[k]);
     }
 
