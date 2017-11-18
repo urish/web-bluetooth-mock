@@ -1,10 +1,16 @@
-# Web Bluetooth Mock
+# Web Bluetooth API Mock
 
 [![Build Status](https://travis-ci.org/urish/web-bluetooth-mock.png?branch=master)](https://travis-ci.org/urish/web-bluetooth-mock)
 
 Mock for the Web Bluetooth API, useful for testing code that uses Web Bluetooth.
 
 Copyright (C) 2017, Uri Shaked. Licensed under the terms of MIT License.
+
+## Installation
+
+The Web Bluetooth API mock is available on npm, and can be installed by running:
+
+    npm install --save-dev web-bluetooth-mock
 
 ## Usage example
 
