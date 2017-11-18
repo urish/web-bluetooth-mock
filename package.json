@@ -12,7 +12,8 @@
     "prepublish": "npm run build"
   },
   "files": [
-    "dist"
+    "dist",
+    "src/event-target.d.ts"
   ],
   "dependencies": {
     "@types/web-bluetooth": "^0.0.3",

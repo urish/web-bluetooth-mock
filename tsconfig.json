@@ -12,9 +12,10 @@
     "rootDir": "src",
     "outDir": "dist",
     "lib": ["es5", "dom", "es2015.core", "es2015.promise"],
-    "types": ["web-bluetooth"]
+    "types": ["web-bluetooth"],
+    "strict": true
   },
   "include": [
-    "src/**/*.ts"
+    "src/index.ts"
   ]
 }

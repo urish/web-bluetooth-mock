@@ -3,6 +3,8 @@
 // Copyright (C) 2017, Uri Shaked
 // Published under the terms of the MIT license
 
+/// <reference path="./event-target.d.ts" />
+
 import { EventTarget } from "event-target-shim";
 
 function leftPad(s: string, count: number, pad: string) {

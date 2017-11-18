@@ -5,6 +5,7 @@
     ],
     "jsRules": {},
     "rules": {
+        "no-reference": false,
         "max-classes-per-file": false
     },
     "rulesDirectory": []
