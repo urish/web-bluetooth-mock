@@ -24,15 +24,15 @@ function normalizeUuid(service: BluetoothServiceUUID): string {
 export class CharacteristicMock extends EventTarget implements BluetoothRemoteGATTCharacteristic {
     public value: DataView;
     public properties = {
-        broadcast: false,
-        read: false,
-        writeWithoutResponse: false,
-        write: false,
-        notify: false,
-        indicate: false,
         authenticatedSignedWrites: false,
+        broadcast: false,
+        indicate: false,
+        notify: false,
+        read: false,
         reliableWrite: false,
         writableAuxiliaries: false,
+        write: false,
+        writeWithoutResponse: false,
     };
 
     public oncharacteristicvaluechanged: (e: Event) => void;
