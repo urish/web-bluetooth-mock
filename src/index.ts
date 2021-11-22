@@ -41,7 +41,7 @@ export class CharacteristicMock extends EventTarget implements BluetoothRemoteGA
 
     constructor(public service: PrimaryServiceMock, public uuid: string) {
         super();
-        this.value = new DataView(new Uint8Array(0).buffer);
+        this.value = new DataView(new Uint8Array(1).buffer);
     }
 
     public startNotifications(): Promise<BluetoothRemoteGATTCharacteristic> {
