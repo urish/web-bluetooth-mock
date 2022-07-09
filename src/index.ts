@@ -183,11 +183,11 @@ export class WebBluetoothMock {
     constructor(public devices: DeviceMock[]) {
 
     }
-    
+
     public getAvailability() {
         return Promise.resolve(true);
     }
-    
+
     public requestDevice(options: RequestDeviceOptions) {
         for (const device of this.devices) {
             for (const filter of options.filters) {
