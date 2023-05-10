@@ -60,6 +60,14 @@ export class CharacteristicMock extends EventTarget implements BluetoothRemoteGA
         return Promise.resolve();
     }
 
+    public writeValueWithoutResponse() {
+        return Promise.resolve();
+    }
+
+    public writeValueWithResponse() {
+        return Promise.resolve();
+    }
+
     public getDescriptor() {
         return Promise.reject(new Error("Not implemented"));
     }
