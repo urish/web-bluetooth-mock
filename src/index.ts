@@ -147,7 +147,6 @@ export class GattMock extends EventTarget implements BluetoothRemoteGATTServer {
 export class DeviceMock extends EventTarget implements BluetoothDevice {
     public watchingAdvertisements = false;
     public gatt: GattMock;
-    public id = "";
 
     public ongattserverdisconnected: (E: Event) => void;
     public oncharacteristicvaluechanged: (E: Event) => void;
@@ -157,9 +156,10 @@ export class DeviceMock extends EventTarget implements BluetoothDevice {
 
     private serviceMocks: { [service: string]: PrimaryServiceMock } = {};
 
-    constructor(public name: string, private services: BluetoothServiceUUID[]) {
+    constructor(public name: string, private services: BluetoothServiceUUID[], public id: string) {
         super();
         this.gatt = new GattMock(this);
+        this.id = id;
     }
 
     public hasService(service: BluetoothServiceUUID) {
